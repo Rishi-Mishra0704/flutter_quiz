@@ -10,6 +10,15 @@ class StartScreen extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset('assets/images/flutter-logo.png', width: 100),
+          const SizedBox(height: 20),
+          const Text(
+            'Flutter Quiz',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 32,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
