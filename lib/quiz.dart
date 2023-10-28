@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
 import 'package:quiz_app/start_screen.dart';
 import 'package:quiz_app/questions_screen.dart';
 
@@ -20,12 +21,23 @@ class _QuizState extends State<Quiz> {
   // }
 
   // alternative to initState
+  final List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   void switchScreen() {
     setState(() {
       activeScreen = 'questions-screen';
     });
+  }
+
+  void chooseAnswer(String answer) {
+    selectedAnswers.add(answer);
+    if (selectedAnswers.length == questions.length) {
+      setState(() {
+        activeScreen = 'start-screen';
+        selectedAnswers.clear();
+      });
+    }
   }
 
   @override
@@ -46,7 +58,9 @@ class _QuizState extends State<Quiz> {
           // child:activeScreen,  // when using initState
           child: activeScreen == 'start-screen'
               ? StartScreen(switchScreen)
-              : const QuestionsScreen(),
+              : QuestionsScreen(
+                  onSelectAnswer: chooseAnswer,
+                ),
         ),
       ),
     );
