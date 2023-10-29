@@ -38,7 +38,7 @@ class ResultScreen extends StatelessWidget {
               'You answered $numOfCorrectQuestions out of $totalNumOfQuestions questions correctly',
             ),
             const SizedBox(height: 30),
-            QuestionsSummary(summaryData: summaryData),
+            QuestionsSummary(summaryData),
             const SizedBox(height: 30),
             TextButton(
               onPressed: () {},
